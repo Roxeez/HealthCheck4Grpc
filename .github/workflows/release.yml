@@ -37,7 +37,8 @@ jobs:
           dry_run: true   
           
       - name: .NET Source
-        run: dotnet nuget add source --username roxeez --password ${{ secrets.NUGET_TOKEN }} \
+        run: | 
+          dotnet nuget add source --username roxeez --password ${{ secrets.NUGET_TOKEN }} \
           --store-password-in-clear-text \
           --name rxz "https://nuget.pkg.github.com/roxeez/index.json"
           
