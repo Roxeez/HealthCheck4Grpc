@@ -34,7 +34,12 @@ jobs:
           default_bump: patch
           release_branches: main
           tag_prefix: ''
-          dry_run: true    
+          dry_run: true   
+          
+      - name: .NET Source
+        run: dotnet nuget add source --username roxeez --password ${{ secrets.NUGET_TOKEN }} \
+          --store-password-in-clear-text \
+          --name rxz "https://nuget.pkg.github.com/roxeez/index.json"
           
       - name: .NET Restore
         run: dotnet restore
