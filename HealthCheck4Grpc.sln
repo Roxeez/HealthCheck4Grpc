@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcServer.AspNetCore", "ex
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{FB0EE60F-411F-4B8C-9479-F4BFE4BD9D03}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\publish.yml = .github\workflows\publish.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
 	EndProjectSection
 EndProject
 Global
