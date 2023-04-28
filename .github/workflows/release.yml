@@ -52,7 +52,8 @@ jobs:
         run: dotnet pack -c Release --no-build /p:Version=${{ steps.versioning.outputs.new_tag }}
         
       - name: .NET Nuget
-        run: dotnet nuget push **/*.nupkg \
+        run: | 
+          dotnet nuget push **/*.nupkg \
           --source rxz \
           --skip-duplicate
         
