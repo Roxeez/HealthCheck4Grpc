@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace HealthCheck4Grpc.Extension;
+namespace HealthCheck4Grpc.AspNetCore.Extension;
 
 public static class ServiceCollectionExtensions
 {

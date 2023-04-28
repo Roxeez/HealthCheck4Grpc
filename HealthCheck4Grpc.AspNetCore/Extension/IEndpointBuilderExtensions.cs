@@ -1,4 +1,7 @@
-﻿namespace HealthCheck4Grpc.Extension;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Routing;
+
+namespace HealthCheck4Grpc.AspNetCore.Extension;
 
 public static class EndpointBuilderExtensions
 {
