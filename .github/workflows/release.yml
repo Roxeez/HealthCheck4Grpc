@@ -8,6 +8,7 @@ on:
       - '.gitignore'
       - '.editorconfig'
       - 'example'
+  workflow_dispatch:
     
 env:
   dotnet: 7.0.x
