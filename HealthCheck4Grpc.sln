@@ -8,8 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F8B96E68-E23
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{09664DF0-F817-4305-9063-3B2D945EF98D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{09799911-12BB-4952-BABE-285CB1724662}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcClient", "example\GrpcClient\GrpcClient.csproj", "{12727475-6C1D-433A-8653-4A94208CCB3E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcClient.AspNetCore", "example\GrpcClient.AspNetCore\GrpcClient.AspNetCore.csproj", "{6DFBAAFC-4E68-4CB1-805C-66995BFD7F79}"

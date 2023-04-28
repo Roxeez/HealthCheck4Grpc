@@ -4,8 +4,24 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
+        <Title>HealthCheck4Grpc</Title>
+        <Authors>Roxeez</Authors>
+        <Company>Cityscoot</Company>
+        <Nullable>disable</Nullable>
+        <Description>Library allowing to easily add health check on grpc services</Description>
+        <PackageProjectUrl>https://github.com/roxeez/HealthCheck4Grpc</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/roxeez/HealthCheck4Grpc</RepositoryUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryType>git</RepositoryType>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
+    <ItemGroup>
+        <None Include="../LICENSE" Pack="true" Visible="false" PackagePath="" />
+        <None Include="../README.md" Pack="true" Visible="false" PackagePath="" />
+    </ItemGroup>
+    
     <ItemGroup>
       <PackageReference Include="Google.Protobuf" Version="3.22.3" />
       <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="7.0.5" />
