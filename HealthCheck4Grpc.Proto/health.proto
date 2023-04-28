@@ -1,0 +1,21 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "HealthCheck4Grpc.Contract";
+
+service GrpcHealthCheck {
+  rpc Check(GrpcHealthCheckRequest) returns (GrpcHealthCheckResponse);
+}
+
+message GrpcHealthCheckRequest {
+  
+}
+
+message GrpcHealthCheckResponse {
+  GrpcHealthStatus status = 1;
+}
+
+enum GrpcHealthStatus {
+  Healthy = 0;
+  Degraded = 1;
+  Unhealthy = 2;
+}
