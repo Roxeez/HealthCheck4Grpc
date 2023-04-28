@@ -53,8 +53,7 @@ jobs:
         
       - name: .NET Nuget
         run: dotnet nuget push **/*.nupkg \
-          --source https://nuget.pkg.github.com/roxeez/index.json \
-          --api-key ${{ secrets.NUGET_TOKEN }} \
+          --source rxz \
           --skip-duplicate
         
       - name: Create tag
