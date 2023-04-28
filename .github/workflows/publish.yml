@@ -3,11 +3,11 @@ name: publish
 on:
   push:
     branches: ["main"]
-  paths-ignore:
-    - 'README.md'
-    - '.gitignore'
-    - '.editorconfig'
-    - 'example'
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
+      - '.editorconfig'
+      - 'example'
     
 env:
   dotnet: 7.0.x
