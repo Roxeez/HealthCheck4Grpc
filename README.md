@@ -1,5 +1,6 @@
 # HealthCheck4Grpc
-Library made to easily add healthcheck to your gRpc services (with more flexibility than the standard gRpc healhcheck library)
+Library made to easily add healthcheck to your grpc services.  
+This library was made because original grpc healthcheck library only support healthy/unhealthy statuses
 
 ### Client without ASP.NET Core
 ```csharp
