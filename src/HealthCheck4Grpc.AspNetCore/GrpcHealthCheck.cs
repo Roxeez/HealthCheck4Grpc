@@ -1,4 +1,5 @@
 ﻿using Grpc.Core;
+using HealthCheck4Grpc.AspNetCore.Extension;
 using HealthCheck4Grpc.Contract;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
@@ -16,18 +17,24 @@ public class GrpcHealthCheck : Contract.GrpcHealthCheck.GrpcHealthCheckBase
     public override async Task<GrpcHealthCheckResponse> Check(GrpcHealthCheckRequest request, ServerCallContext context)
     {
         var report = await service.CheckHealthAsync();
-
-        var status = report.Status switch
+        
+        var services = new List<GrpcServiceStatus>();
+        foreach (var (name, serviceReport) in report.Entries)
         {
-            HealthStatus.Healthy => GrpcHealthStatus.Healthy,
-            HealthStatus.Degraded => GrpcHealthStatus.Degraded,
-            HealthStatus.Unhealthy => GrpcHealthStatus.Unhealthy,
-            _ => GrpcHealthStatus.Healthy
-        };
+            services.Add(new GrpcServiceStatus
+            {
+                Name = name,
+                Status = serviceReport.Status.ToGrpcHealthStatus()
+            });
+        }
 
         return new GrpcHealthCheckResponse
         {
-            Status = status
+            Status = report.Status.ToGrpcHealthStatus(),
+            Services =
+            {
+                services
+            }
         };
     }
 }

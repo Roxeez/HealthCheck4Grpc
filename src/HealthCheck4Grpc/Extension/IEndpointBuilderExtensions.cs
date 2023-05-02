@@ -1,4 +1,5 @@
-﻿using Grpc.Net.Client;
+﻿using System.Reflection;
+using Grpc.Net.Client;
 using HealthCheck4Grpc.Contract;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -11,7 +12,7 @@ public static class EndpointBuilderExtensions
     {
         var channel = GrpcChannel.ForAddress(url);
         var service = channel.CreateGrpcHealthCheckClient();
-
+        
         builder.AddAsyncCheck(name, async () =>
         {
             GrpcHealthCheckResponse response;
@@ -29,8 +30,22 @@ public static class EndpointBuilderExtensions
                 GrpcHealthStatus.Healthy => HealthStatus.Healthy,
                 GrpcHealthStatus.Degraded => HealthStatus.Degraded,
                 GrpcHealthStatus.Unhealthy => HealthStatus.Unhealthy,
-                _ => HealthStatus.Unhealthy
+                _ => HealthStatus.Healthy
             };
+
+            /*
+             * This is a trick to avoid cyclic dependencies
+             * If the service in not healthy we try to check if this service is in the reasons
+             * If this service is in the reasons and it is the only reason we ignore it and return healthy
+             */
+            if (status != HealthStatus.Healthy)
+            {
+                var currentService = response.Services.FirstOrDefault(x => x.Name == name);
+                if (currentService is not null && response.Services.Count == 1)
+                {
+                    status = HealthStatus.Healthy;
+                }
+            }
 
             return new HealthCheckResult(status);
         });

@@ -12,6 +12,13 @@ message GrpcHealthCheckRequest {
 
 message GrpcHealthCheckResponse {
   GrpcHealthStatus status = 1;
+  repeated GrpcServiceStatus services = 2;
+}
+
+message GrpcServiceStatus
+{
+  string name = 1;
+  GrpcHealthStatus status = 2;
 }
 
 enum GrpcHealthStatus {
